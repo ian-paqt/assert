@@ -1,0 +1,14 @@
+composer.lock
+vendor
+
+#OS
+.DS_Store
+
+#IDE
+.idea
+.vscodes
+_ide_helper.php
+_ide_helper_models.php
+
+.phpunit.result.cache
+.phpunit.cache
