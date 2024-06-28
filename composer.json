@@ -1,5 +1,5 @@
 {
-    "name": "ians/assert",
+    "name": "paqtcom/assert",
     "description": "Assertions to validate method input/output with nice error messages.",
     "authors": [
         {
@@ -9,12 +9,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Ians\\Assert\\": "src"
+            "PAQT\\Assert\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ians\\Assert\\Tests\\": "tests"
+            "PAQT\\Assert\\Tests\\": "tests"
         }
     },
     "minimum-stability": "stable",

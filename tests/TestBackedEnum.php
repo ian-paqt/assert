@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ians\Assert\Tests;
+namespace PAQT\Assert\Tests;
 
 enum TestBackedEnum: string
 {

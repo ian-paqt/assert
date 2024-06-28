@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ians\Assert\Tests;
+namespace PAQT\Assert\Tests;
 
 use BackedEnum;
-use Ians\Assert\Assert;
+use PAQT\Assert\Assert;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
 
@@ -32,14 +32,14 @@ class Test extends TestCase
         return [
             'Equals' => [
                 'methodName'      => 'eq',
-                'expectedMessage' => 'Expected a value equal to Ians\Assert\Tests\TestBackedEnum::SecondCase. '
-                    . 'Got: Ians\Assert\Tests\TestBackedEnum::FirstCase',
+                'expectedMessage' => 'Expected a value equal to PAQT\Assert\Tests\TestBackedEnum::SecondCase. '
+                    . 'Got: PAQT\Assert\Tests\TestBackedEnum::FirstCase',
                 'value'           => TestBackedEnum::FirstCase,
                 'expectation'     => TestBackedEnum::SecondCase,
             ],
             'Not equals' => [
                 'methodName'      => 'notEq',
-                'expectedMessage' => 'Expected a different value than Ians\Assert\Tests\TestBackedEnum::FirstCase.',
+                'expectedMessage' => 'Expected a different value than PAQT\Assert\Tests\TestBackedEnum::FirstCase.',
                 'value'           => TestBackedEnum::FirstCase,
                 'expectation'     => TestBackedEnum::FirstCase,
             ]
@@ -66,14 +66,14 @@ class Test extends TestCase
         return [
             'Equals' => [
                 'methodName'      => 'eq',
-                'expectedMessage' => 'Expected a value equal to Ians\Assert\Tests\TestEnum::SecondCase. '
-                    . 'Got: Ians\Assert\Tests\TestEnum::FirstCase',
+                'expectedMessage' => 'Expected a value equal to PAQT\Assert\Tests\TestEnum::SecondCase. '
+                    . 'Got: PAQT\Assert\Tests\TestEnum::FirstCase',
                 'value'           => TestEnum::FirstCase,
                 'expectation'     => TestEnum::SecondCase,
             ],
             'Not equals' => [
                 'methodName'      => 'notEq',
-                'expectedMessage' => 'Expected a different value than Ians\Assert\Tests\TestEnum::FirstCase.',
+                'expectedMessage' => 'Expected a different value than PAQT\Assert\Tests\TestEnum::FirstCase.',
                 'value'           => TestEnum::FirstCase,
                 'expectation'     => TestEnum::FirstCase,
             ]

@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Ians\Assert;
+namespace PAQT\Assert;
 
-use BackedEnum;
 use Webmozart\Assert\Assert as WebmozartAssert;
 
 class Assert extends WebmozartAssert
