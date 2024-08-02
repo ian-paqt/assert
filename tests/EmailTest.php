@@ -91,7 +91,7 @@ class EmailTest extends TestCase
             sprintf('Expected a value to be a valid e-mail address. Got: "%s"', $email)
         );
 
-        Assert::email($email);
+        Assert::email($email, validation: RFCValidation::class);
     }
 
     /** @test */
@@ -186,7 +186,6 @@ class EmailTest extends TestCase
     public function all_email_fails_on_first_failing_default_validation()
     {
         $validEmail = 'me@domain.com';
-
         $tooLongDomainLabel = str_repeat('x', 62);
         $domain = str_repeat($tooLongDomainLabel . '.', 4) . '.com';
         $this->assertEquals(256, strlen($domain));
@@ -198,9 +197,7 @@ class EmailTest extends TestCase
             sprintf('Expected a value to be a valid e-mail address. Got: "%s"', $invalidEmail)
         );
 
-        Assert::nullOrEmail(null);
-        Assert::nullOrEmail($validEmail);
-        Assert::nullOrEmail($invalidEmail);
+        Assert::allEmail([$validEmail, $invalidEmail], validation: RFCValidation::class);
     }
 
     /** @test */
