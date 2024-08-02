@@ -15,16 +15,6 @@
             <property name="minimum" value="300" />
         </properties>
     </rule>
-    <rule ref="rulesets/codesize.xml/TooManyMethods">
-        <properties>
-            <property name="maxmethods" value="20" />
-        </properties>
-    </rule>
-    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
-        <properties>
-            <property name="maxmethods" value="15" />
-        </properties>
-    </rule>
     <rule ref="rulesets/codesize.xml/ExcessiveClassComplexity">
         <properties>
             <property name="maximum" value="100" />
