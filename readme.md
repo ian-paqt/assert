@@ -13,14 +13,14 @@ To get started, you should add the the repo as a valid repository to your `compo
 ]
 ```
 
-Then you can install the `ians/assert` Composer dependency to your project:
+Then you can install the `paqtcom/assert` Composer dependency to your project:
 ```bash
-composer require ians/assert
+composer require paqtcom/assert
 ```
 
 ## Usage
 
-See [paqtcom/assert](https://github.com/webmozarts/assert) documentation about how to use Assertions.
+See [webmozart/assert](https://github.com/webmozarts/assert) documentation about how to use Assertions.
 
 ## Improvements
 
