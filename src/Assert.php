@@ -39,7 +39,7 @@ class Assert extends WebmozartAssert
     }
 
     /** @param null|class-string<EmailValidation> $validation If none specified, FILTER_VALIDATE_EMAIL is used. */
-    public static function nullOrEmail($value, $message = '', ?string $validation = null)
+    public static function nullOrEmail($value, $message = '', ?string $validation = null): void
     {
         null === $value || static::email($value, $message, $validation);
     }
