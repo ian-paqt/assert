@@ -44,6 +44,16 @@ class EmailTest extends TestCase
     }
 
     /** @test */
+    public function email_with_rfc_validation_accepts_local_name_of_any_length(): void
+    {
+        $this->expectNotToPerformAssertions();
+
+        $email = str_repeat('x', 999) . '@domain.com';
+
+        Assert::email($email, validation: RFCValidation::class);
+    }
+
+    /** @test */
     public function email_accepts_domain_label_of_64_chars(): void
     {
         $this->expectNotToPerformAssertions();
