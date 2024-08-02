@@ -16,7 +16,7 @@ class EmailTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        $email = str_repeat('x', 64) . '@test.com';
+        $email = str_repeat('x', 64) . '@domain.com';
 
         Assert::email($email);
     }
@@ -26,7 +26,7 @@ class EmailTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        $email = str_repeat('x', 64) . '@test.com';
+        $email = str_repeat('x', 64) . '@domain.com';
 
         Assert::email($email, validation: RFCValidation::class);
     }
@@ -34,7 +34,7 @@ class EmailTest extends TestCase
     /** @test */
     public function email_fails_on_local_name_exceeding_64_chars(): void
     {
-        $email = str_repeat('x', 65) . '@test.com';
+        $email = str_repeat('x', 65) . '@domain.com';
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
             sprintf('Expected a value to be a valid e-mail address. Got: "%s"', $email)
