@@ -9,7 +9,7 @@ use PAQT\Assert\Assert;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\InvalidArgumentException;
 
-class Test extends TestCase
+class EnumTest extends TestCase
 {
 
     /**

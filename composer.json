@@ -24,6 +24,7 @@
         "phpmd/phpmd": "^2.15"
     },
     "require": {
-        "webmozart/assert": "^1.11"
+        "webmozart/assert": "^1.11",
+        "egulias/email-validator": "^4"
     }
 }

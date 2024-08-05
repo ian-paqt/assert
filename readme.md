@@ -13,9 +13,9 @@ To get started, you should add the the repo as a valid repository to your `compo
 ]
 ```
 
-Then you can install the `ians/assert` Composer dependency to your project:
+Then you can install the `paqtcom/assert` Composer dependency to your project:
 ```bash
-composer require ians/assert
+composer require paqtcom/assert
 ```
 
 ## Usage
@@ -39,3 +39,40 @@ It tells us:
 Expected a value equal to Ians\Assert\Tests\TestEnum::SecondCase. Got: Ians\Assert\Tests\TestEnum::FirstCase
 ```
 
+#### Custom email validation
+
+Default email assertions use PHP's `filter_var()` with `FILTER_VALIDATE_EMAIL`.
+
+
+All email assertions have an optional `$validation` argument to supply an alternative validation.
+All validations must be an implementation of the interface `Egulias\EmailValidator\Validation`.
+
+The Composer package [egulias/email-validator](https://github.com/egulias/EmailValidator) is used for this.
+
+Laravel uses this same package for email validation, its default email validator is `RFCValidation`, which allows for more formats than  `FILTER_VALIDATE_EMAIL`.
+
+
+This applies to these methods
+- `Assert::email`
+- `Assert::nullOrEmail`
+- `Assert::allEmail`
+- `Assert::allNullOrEmail`
+
+
+Regular email assertion:
+
+```php
+use Egulias\EmailValidator\Validation\RFCValidation;
+use PAQT\Assert\Assert;
+
+Assert::email('me@localhost'); // will throw an InvalidArgumentException due to missing top level domain
+```
+
+Custom validation email assertion:
+
+```php
+use Egulias\EmailValidator\Validation\RFCValidation;
+use PAQT\Assert\Assert;
+
+Assert::email('me@localhost', validation: RFCValidation::class); // will not throw an exception
+```
