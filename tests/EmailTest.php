@@ -105,13 +105,13 @@ class EmailTest extends TestCase
     }
 
     /** @test */
-    public function email_fails_on_domain_exceeding_255_chars(): void
+    public function email_fails_on_email_exceeding_254_chars(): void
     {
-        $label = str_repeat('x', 62);
-        $domain = str_repeat($label . '.', 4) . '.com';
-        $this->assertEquals(256, strlen($domain));
+        $label = str_repeat('x', 40);
+        $domain = join('.', array_fill(0, 6, $label)) . '.com';
 
-        $email = 'me@' . $domain;
+        $email = 'local@' . $domain;
+        $this->assertEquals(255, strlen($email));
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -122,14 +122,25 @@ class EmailTest extends TestCase
     }
 
     /** @test */
-    public function email_with_rfc_validation_fails_on_domain_exceeding_255_chars(): void
+    public function email_with_rfc_validation_accepts_email_exceeding_254_chars(): void
+    {
+        $label = str_repeat('x', 40);
+        $domain = join('.', array_fill(0, 6, $label)) . '.com';
+
+        $email = 'local@' . $domain;
+        $this->assertEquals(255, strlen($email));
+
+        Assert::email($email, validation: RFCValidation::class);
+    }
+
+    /** @test */
+    public function email_with_rfc_validation_fails_on_domain_exceeding_254_chars(): void
     {
         $label = str_repeat('x', 62);
-        $domain = str_repeat($label . '.', 4) . '.com';
-
-        $this->assertEquals(256, strlen($domain));
+        $domain = join('.', array_fill(0, 4, $label)) . '.nl';
 
         $email = 'me@' . $domain;
+        $this->assertEquals(254, strlen($domain));
 
         $this->expectExceptionMessage(
             sprintf('Expected a value to be a valid e-mail address. Got: "%s"', $email)
@@ -198,7 +209,6 @@ class EmailTest extends TestCase
         $validEmail = 'me@domain.com';
         $tooLongDomainLabel = str_repeat('x', 62);
         $domain = str_repeat($tooLongDomainLabel . '.', 4) . '.com';
-        $this->assertEquals(256, strlen($domain));
 
         $invalidEmail = 'me@' . $domain;
 
@@ -216,8 +226,7 @@ class EmailTest extends TestCase
         $validEmails = ['me@domain.com', 'me@localhost'];
 
         $tooLongDomainLabel = str_repeat('x', 62);
-        $domain = str_repeat($tooLongDomainLabel . '.', 4) . '.com';
-        $this->assertEquals(256, strlen($domain));
+        $domain = join('.', array_fill(0, 4, $tooLongDomainLabel)) . '.com';
 
         $invalidEmail = 'me@' . $domain;
 
@@ -250,8 +259,6 @@ class EmailTest extends TestCase
 
         $tooLongDomainLabel = str_repeat('x', 62);
         $domain = str_repeat($tooLongDomainLabel . '.', 4) . '.com';
-        $this->assertEquals(256, strlen($domain));
-
         $invalidEmail = 'me@' . $domain;
 
         $this->expectException(InvalidArgumentException::class);
