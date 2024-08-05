@@ -56,7 +56,7 @@ This applies to these methods
 - `Assert::email`
 - `Assert::nullOrEmail`
 - `Assert::allEmail`
-- `Assert::allNulOrEmail`
+- `Assert::allNullOrEmail`
 
 
 Regular email assertion:
